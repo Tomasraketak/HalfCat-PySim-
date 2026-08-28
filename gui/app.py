@@ -132,6 +132,13 @@ class MainWindow(QMainWindow):
         btn_layout.addWidget(self.btn_export)
         
         self.input_layout.addLayout(btn_layout)
+        
+        # Attribution Label
+        lbl_credits = QLabel("Math/Model by HalfCat Rocketry")
+        lbl_credits.setStyleSheet("font-size: 10px; color: gray;")
+        lbl_credits.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.input_layout.addWidget(lbl_credits)
+        
         self.input_layout.addStretch()
         
         left_panel.setWidget(input_widget)

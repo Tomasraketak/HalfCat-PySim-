@@ -36,3 +36,7 @@ python main.py
 3. Click **Run Simulation**. The backend engine will integrate the state variables and plot the thrust and pressures over time.
 4. **Analyze Results:** The top right panel will display the calculated Burn Time, Total Impulse, and Peak Thrust.
 5. Click **Export .eng** to save the thrust curve for your flight simulations.
+
+## Credits
+The core mathematical model, equations, and property tables are based on **HalfCatSim**, originally created by **HalfCat Rocketry**. 
+Visit their official website at [https://www.halfcatrocketry.com/halfcatsim](https://www.halfcatrocketry.com/halfcatsim) for the original Excel-based simulator, hardware documentation, and more hybrid rocketry resources. This Python project is an independent port designed to provide a native GUI experience.

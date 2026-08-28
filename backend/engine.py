@@ -58,26 +58,26 @@ class HalfCatEngine:
         
         # Setup initial state
         t = 0.0
-        p_n2o = inputs.get("P_N2O_tank_bar", 40.0) * 100 # bar to kPa
+        p_n2o = inputs.get("P_N2O_tank_kPa", 4000.0)
         p_n2o_init = p_n2o
-        m_ox_init = inputs.get("m_ox_init", 3.0) # kg
+        m_ox_init = inputs.get("m_ox_init_kg", 3.0)
         m_ox = m_ox_init
         
-        p_fu = inputs.get("P_fu_tank_bar", 40.0) * 100 # bar to kPa
-        m_fu_init = inputs.get("m_fu_init", 1.0) # kg
+        p_fu = inputs.get("P_fu_tank_kPa", 4000.0)
+        m_fu_init = inputs.get("m_fu_init_kg", 1.0)
         m_fu = m_fu_init
         
         k_liq = inputs.get("decay_liq", 0.7)
         k_gas = inputs.get("decay_gas", 0.25)
         
-        CdA_ox = inputs.get("CdA_ox_mm2", 10.0) * 1e-6 # mm² to m²
-        CdA_fu = inputs.get("CdA_fu_mm2", 10.0) * 1e-6 # mm² to m²
+        CdA_ox = inputs.get("CdA_ox_m2", 1e-5)
+        CdA_fu = inputs.get("CdA_fu_m2", 1e-5)
         
-        d_t = inputs.get("d_t_mm", 25.4) / 1000.0 # mm to m
-        d_e = inputs.get("d_e_mm", 50.8) / 1000.0 # mm to m
+        d_t = inputs.get("d_t_m", 0.0254)
+        d_e = inputs.get("d_e_m", 0.0508)
         A_t = np.pi * (d_t / 2)**2
         A_e = np.pi * (d_e / 2)**2
-        P_amb = inputs.get("P_amb_bar", 1.013) * 100 # bar to kPa
+        P_amb = inputs.get("P_amb_kPa", 101.325)
         
         c_star_eff = inputs.get("c_star_eff", 0.85)
         nozzle_eff = inputs.get("nozzle_eff", 0.95)

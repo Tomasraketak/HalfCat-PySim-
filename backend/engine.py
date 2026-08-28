@@ -58,23 +58,26 @@ class HalfCatEngine:
         
         # Setup initial state
         t = 0.0
-        p_n2o = inputs.get("P_N2O_tank", 4000.0) # kPa
+        p_n2o = inputs.get("P_N2O_tank_bar", 40.0) * 100 # bar to kPa
+        p_n2o_init = p_n2o
         m_ox_init = inputs.get("m_ox_init", 3.0) # kg
         m_ox = m_ox_init
         
-        p_fu = inputs.get("P_fu_tank", 4000.0) # kPa
+        p_fu = inputs.get("P_fu_tank_bar", 40.0) * 100 # bar to kPa
         m_fu_init = inputs.get("m_fu_init", 1.0) # kg
         m_fu = m_fu_init
         
         k_liq = inputs.get("decay_liq", 0.7)
         k_gas = inputs.get("decay_gas", 0.25)
         
-        CdA_ox = inputs.get("CdA_ox", 1e-5) # m^2
-        CdA_fu = inputs.get("CdA_fu", 1e-5) # m^2
+        CdA_ox = inputs.get("CdA_ox_mm2", 10.0) * 1e-6 # mm² to m²
+        CdA_fu = inputs.get("CdA_fu_mm2", 10.0) * 1e-6 # mm² to m²
         
-        A_t = inputs.get("A_t", 0.0005) # m^2
-        A_e = inputs.get("A_e", 0.002) # m^2
-        P_amb = inputs.get("P_amb", 101.325) # kPa
+        d_t = inputs.get("d_t_mm", 25.4) / 1000.0 # mm to m
+        d_e = inputs.get("d_e_mm", 50.8) / 1000.0 # mm to m
+        A_t = np.pi * (d_t / 2)**2
+        A_e = np.pi * (d_e / 2)**2
+        P_amb = inputs.get("P_amb_bar", 1.013) * 100 # bar to kPa
         
         c_star_eff = inputs.get("c_star_eff", 0.85)
         nozzle_eff = inputs.get("nozzle_eff", 0.95)
@@ -90,7 +93,7 @@ class HalfCatEngine:
             # 1. Update Tank Pressures
             if phase == "Liquid":
                 if m_ox / m_ox_init > 0.1:
-                    p_n2o = inputs.get("P_N2O_tank", 4000.0) * ((m_ox / m_ox_init) * (1 - k_liq) + k_liq)
+                    p_n2o = p_n2o_init * ((m_ox / m_ox_init) * (1 - k_liq) + k_liq)
                 else:
                     phase = "Gas"
             if phase == "Gas":

@@ -40,9 +40,9 @@ class MainWindow(QMainWindow):
         self.inputs = {}
         
         self._create_input_group("Setup", {
-            "P_N2O_tank": ("4000.0", "N2O Pressure (kPa)"),
+            "P_N2O_tank_bar": ("40.0", "N2O Pressure (bar)"),
             "m_ox_init": ("3.0", "Initial N2O Mass (kg)"),
-            "P_fu_tank": ("4000.0", "Fuel Pressure (kPa)"),
+            "P_fu_tank_bar": ("40.0", "Fuel Pressure (bar)"),
             "m_fu_init": ("1.0", "Initial Fuel Mass (kg)"),
             "decay_liq": ("0.7", "Liquid Decay Constant"),
             "decay_gas": ("0.25", "Gas Decay Constant"),
@@ -51,14 +51,14 @@ class MainWindow(QMainWindow):
         })
         
         self._create_input_group("Fluid System", {
-            "CdA_ox": ("0.00001", "Oxidizer CdA (m²)"),
-            "CdA_fu": ("0.00001", "Fuel CdA (m²)")
+            "CdA_ox_mm2": ("10.0", "Oxidizer CdA (mm²)"),
+            "CdA_fu_mm2": ("10.0", "Fuel CdA (mm²)")
         })
         
         self._create_input_group("Thrust Chamber", {
-            "A_t": ("0.000506", "Throat Area (m²)"),
-            "A_e": ("0.002026", "Exit Area (m²)"),
-            "P_amb": ("101.325", "Ambient Pressure (kPa)"),
+            "d_t_mm": ("25.4", "Throat Diameter (mm)"),
+            "d_e_mm": ("50.8", "Exit Diameter (mm)"),
+            "P_amb_bar": ("1.013", "Ambient Pressure (bar)"),
             "c_star_eff": ("0.85", "C* Efficiency"),
             "nozzle_eff": ("0.95", "Nozzle Efficiency")
         })
